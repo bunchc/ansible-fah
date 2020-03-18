@@ -7,6 +7,9 @@ fah_user: "cody_bunch"
 fah_passkey: ""
 fah_smp: "true"
 fah_gpu: "true"
+fah_power: "full"
+
+fah_allow_cidr: "0.0.0.0/0"
 
 fah_redhat_pkgs:
   - "https://download.foldingathome.org/releases/public/release/fahclient/centos-5.3-64bit/v7.4/fahclient-{{ fah_version }}-1.x86_64.rpm"

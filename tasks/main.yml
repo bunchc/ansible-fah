@@ -8,6 +8,7 @@
   template:
     src: foldingathome.service.j2
     dest: /etc/systemd/system/foldingathome.service
+    owner: fahclient
 
 - name: Enable and start service
   systemd:

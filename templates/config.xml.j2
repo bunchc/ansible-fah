@@ -1,9 +1,28 @@
 <config>
-  <user value='{{ fah_user }}'/>
-  <team value='{{ fah_team }}'/>
-  <passkey value='{{ fah_passkey }}'/>
+  <!-- Client Control -->
+  <fold-anon v='true'/>
+
+  <!-- Folding Slot Configuration -->
+  <gpu v='{{ fah_gpu }}'/>
+
+  <!-- HTTP Server -->
+  <allow v='{{ fah_allow_cidr }}'/>
+
+  <!-- Remote Command Server -->
+  <password v='PASSWORD'/>
+
+  <!-- Slot Control -->
+  <power v='{{ fah_power }}'/>
   <smp value='{{ fah_smp }}'/>
   <gpu value='{{ fah_gpu }}'/>
-  <power v='full'/>
+  
+  <!-- User Information -->
+  <team v='{{ fah_team }}'/>
+  <user v='{{ fah_user }}'/>
+  
+  <!-- Web Server -->
+  <web-allow v='{{ fah_allow_cidr }}'/>
+  
+  <!-- Folding Slots -->
   <slot id='0' type='CPU'/>
 </config>
