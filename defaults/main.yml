@@ -1,0 +1,19 @@
+---
+# Defaults for ansible-fah
+
+fah_version: "7.4.4"
+fah_team: "52737"
+fah_user: "cody_bunch"
+fah_passkey: ""
+fah_smp: "true"
+fah_gpu: "true"
+
+fah_redhat_pkgs:
+  - "https://download.foldingathome.org/releases/public/release/fahclient/centos-5.3-64bit/v7.4/fahclient-{{ fah_version }}-1.x86_64.rpm"
+  - "https://download.foldingathome.org/releases/public/release/fahcontrol/centos-5.3-64bit/v7.4/fahcontrol-{{ fah_version }}-1.noarch.rpm"
+  - "https://download.foldingathome.org/releases/public/release/fahviewer/centos-5.3-64bit/v7.4/fahviewer-{{ fah_version }}-1.x86_64.rpm"
+
+fah_debian_pkgs:
+  - "https://download.foldingathome.org/releases/public/release/fahclient/debian-testing-64bit/v7.4/fahclient_{{ fah_version }}_amd64.deb"
+  - "https://download.foldingathome.org/releases/public/release/fahcontrol/debian-testing-64bit/v7.4/fahcontrol_{{ fah_version }}-1_all.deb"
+  - "https://download.foldingathome.org/releases/public/release/fahviewer/debian-testing-64bit/v7.4/fahviewer_{{f ah_version }}_amd64.deb"

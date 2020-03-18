@@ -1,0 +1,27 @@
+- include: debian.yml
+  when: ansible_os_family == "Debian"
+
+- include: redhat.yml
+  when: ansible_os_family == "RedHat"
+
+- name: Create systemd unit file
+  template:
+    src: foldingathome.service.j2
+    dest: /etc/systemd/system/foldingathome.service
+
+- name: Enable and start service
+  systemd:
+    daemon_reload: yes
+    state: started
+    enabled: yes
+    name: foldingathome
+
+- name: Configure fah
+  template:
+    src: config.xml.j2
+    dest: /var/lib/fahclient/config.xml
+
+- name: Restart service for new config
+  systemd:
+    state: restarted
+    name: foldingathome

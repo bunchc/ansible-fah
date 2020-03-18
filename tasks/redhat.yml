@@ -1,0 +1,4 @@
+- name: Install fah packages (RedHat)
+  shell: rpm -i --nodeps {{ item }}
+  with_items:
+    - "{{ fah_redhat_pkgs }}"

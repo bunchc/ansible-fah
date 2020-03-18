@@ -1,0 +1,9 @@
+---
+# Playbook to install and launch folding at home client
+- name: provision new vm
+  vars:
+    fah_team: "52737"
+    fah_user: "cody_bunch"
+  hosts: folding_hosts
+  roles:
+    - ansible-fah

@@ -1,0 +1,4 @@
+- name: Install fah packages (Debian)
+  apt:
+    deb: "{{ fah_debian_packages }}"
+
