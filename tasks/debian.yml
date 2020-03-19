@@ -1,4 +1,60 @@
-- name: Install fah packages (Debian)
-  apt:
-    deb: "{{ fah_debian_packages }}"
+---
+# Install and configure Folding@Home on Debian based systems.
 
+- name: Download Folding@Home packages
+  get_url:
+    url: "{{ item }}"
+    dest: "/tmp/{{ item | basename }}"
+  with_items:
+    - "{{ fah_debian_pkgs }}"
+
+- name: Set Folding@Home user
+  debconf:
+    name: fahclient
+    value: "{{ fah_user | default('Anonymous') }}"
+    question: fahclient/user
+    vtype: string
+
+- name: Set Folding@Home power
+  debconf:
+    name: fahclient
+    value: "{{ fah_power | default('medium') }}"
+    question: fahclient/power
+    vtype: multiselect
+
+- name: Set Folding@Home passkey
+  debconf:
+    name: fahclient
+    value: "{{ fah_passkey | default('')}}"
+    question: fahclient/passkey
+    vtype: string
+
+- name: Set Folding@Home team
+  debconf:
+    name: fahclient
+    value: "{{ fah_team | default('52737') }}"
+    question: fahclient/team
+    vtype: string
+
+- name: Set Folding@Home to autostart
+  debconf:
+    name: fahclient
+    value: "{{ fah_deb_autostart | default(true) }}"
+    question: fahclient/autostart
+    vtype: boolean
+
+- name: Install Folding@Home packages
+  shell: dpkg -i --force-depends /tmp/{{ item | basename }}
+  with_items:
+    - "{{ fah_debian_pkgs }}"
+
+- name: Dropping Folding@Home config
+  template:
+    src: config.xml.j2
+    dest: /etc/fahclient/config.xml
+    owner: fahclient
+
+- name: Restarting Folding@Home
+  service:
+    name: FAHClient
+    state: restarted

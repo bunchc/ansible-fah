@@ -1,4 +1,31 @@
-- name: Install fah packages (RedHat)
+---
+# Install and configures Folding@Home on RedHat based systems
+
+- name: Install Folding@Home packages (RedHat)
   shell: rpm -i --nodeps {{ item }}
   with_items:
     - "{{ fah_redhat_pkgs }}"
+
+- name: Create systemd unit file
+  template:
+    src: foldingathome.service.j2
+    dest: /etc/systemd/system/foldingathome.service
+    owner: fahclient
+
+- name: Enable and start service
+  systemd:
+    daemon_reload: yes
+    state: started
+    enabled: yes
+    name: foldingathome
+
+- name: Configure Folding@Home
+  template:
+    src: config.xml.j2
+    dest: /var/lib/fahclient/config.xml
+
+- name: Restart Folding@Home
+  systemd:
+    state: restarted
+    name: foldingathome
+    owner: fahclient

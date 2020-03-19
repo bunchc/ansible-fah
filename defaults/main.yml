@@ -19,4 +19,4 @@ fah_redhat_pkgs:
 fah_debian_pkgs:
   - "https://download.foldingathome.org/releases/public/release/fahclient/debian-testing-64bit/v7.4/fahclient_{{ fah_version }}_amd64.deb"
   - "https://download.foldingathome.org/releases/public/release/fahcontrol/debian-testing-64bit/v7.4/fahcontrol_{{ fah_version }}-1_all.deb"
-  - "https://download.foldingathome.org/releases/public/release/fahviewer/debian-testing-64bit/v7.4/fahviewer_{{f ah_version }}_amd64.deb"
+  - "https://download.foldingathome.org/releases/public/release/fahviewer/debian-testing-64bit/v7.4/fahviewer_{{ fah_version }}_amd64.deb"
